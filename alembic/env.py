@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from app.core.config import settings
 from app.core.db import Base
-from app.models import user  # noqa: F401  импортируем модели, чтобы они попали в metadata
+from app.models import user, category, product  # noqa: F401  импортируем модели, чтобы они попали в metadata
 
 config = context.config
 
