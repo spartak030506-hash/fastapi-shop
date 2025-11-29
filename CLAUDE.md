@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**Где искать актуальное описание CRUD для категорий и товаров:** см. раздел "API роутеры" ниже — под заголовками **Categories (Категории)** и **Products (Товары)** перечислены все доступные маршруты с пометками о требуемой авторизации и валидации.
+
 ## Проект
 
 FastAPI Shop - это веб-приложение для интернет-магазина на основе FastAPI с использованием SQLAlchemy и Alembic для миграций базы данных.
@@ -104,6 +106,20 @@ alembic history
 - `POST /api/v1/users/` - регистрация нового пользователя
 - `GET /api/v1/users/me` - получить информацию о текущем пользователе (требует токен)
 - `GET /api/v1/users/{user_id}` - получить пользователя по ID
+
+**Categories (Категории):**
+- `POST /api/v1/categories/` - создать новую категорию (требует токен)
+- `GET /api/v1/categories/` - список всех категорий
+- `GET /api/v1/categories/{category_id}` - категория по ID
+- `PUT /api/v1/categories/{category_id}` - обновить категорию (требует токен)
+- `DELETE /api/v1/categories/{category_id}` - удалить категорию (требует токен)
+
+**Products (Товары):**
+- `POST /api/v1/products/` - создать новый товар (требует токен; проверяет существование категории)
+- `GET /api/v1/products/` - список товаров, поддерживает фильтр `category_id`
+- `GET /api/v1/products/{product_id}` - товар по ID
+- `PUT /api/v1/products/{product_id}` - обновить товар (требует токен; валидирует категорию при смене)
+- `DELETE /api/v1/products/{product_id}` - удалить товар (требует токен)
 
 **Общие:**
 - `GET /health` - проверка здоровья приложения
