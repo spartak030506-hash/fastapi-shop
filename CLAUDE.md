@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**Где искать актуальное описание CRUD для категорий и товаров:** см. раздел "API роутеры" ниже — под заголовками **Categories (Категории)** и **Products (Товары)** перечислены все доступные маршруты с пометками о требуемой авторизации и валидации.
+
 ## Проект
 
 FastAPI Shop - это веб-приложение для интернет-магазина на основе FastAPI с использованием SQLAlchemy и Alembic для миграций базы данных.
