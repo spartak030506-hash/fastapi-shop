@@ -1,0 +1,12 @@
+fastapi[standard]
+uvicorn[standard]
+
+SQLAlchemy
+alembic
+
+pydantic-settings
+python-dotenv
+
+bcrypt>=4.0.0
+python-jose[cryptography]
+email-validator

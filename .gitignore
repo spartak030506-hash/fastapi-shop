@@ -1,0 +1,26 @@
+# виртуальное окружение
+venv/
+.env
+
+# байткод Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# логи
+*.log
+
+# кэш тестов
+.pytest_cache/
+
+# IDE/редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# mypy / typing
+.mypy_cache/
+.pytype/
+.dmypy.json
