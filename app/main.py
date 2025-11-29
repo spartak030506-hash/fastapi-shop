@@ -1,11 +1,12 @@
 from fastapi import FastAPI
-from app.api.v1 import users
+from app.api.v1 import users, auth
 
 app = FastAPI(
     title="FastAPI Shop",
     version="0.1.0",
 )
 
+app.include_router(auth.router, prefix='/api/v1/auth', tags=['Auth'])
 app.include_router(users.router, prefix='/api/v1/users', tags=['Users'])
 
 @app.get("/health")

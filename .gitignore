@@ -2,6 +2,11 @@
 venv/
 .env
 
+# база данных
+*.db
+*.db-shm
+*.db-wal
+
 # байткод Python
 __pycache__/
 *.py[cod]

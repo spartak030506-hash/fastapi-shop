@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
+from app.api.deps import get_current_active_user
 from app.core.db import get_db
 from app.models.user import User
 from app.schemas.user import UserCreate, UserRead
@@ -31,6 +32,16 @@ def create_user(user_in: UserCreate, db: Session = Depends(get_db)):
     return db_user
 
 
+@router.get('/me', response_model=UserRead)
+def get_current_user_info(current_user: User = Depends(get_current_active_user)):
+    """
+    Получить информацию о текущем аутентифицированном пользователе.
+
+    Требует токен в заголовке: Authorization: Bearer <token>
+    """
+    return current_user
+
+
 @router.get('/{user_id}', response_model=UserRead)
 def get_user(user_id: int, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.id == user_id).first()
@@ -40,5 +51,5 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
             status_code=status.HTTP_404_NOT_FOUND,
             detail='Пользователь не найден',
         )
-    
+
     return user
